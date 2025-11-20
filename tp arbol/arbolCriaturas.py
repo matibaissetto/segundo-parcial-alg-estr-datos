@@ -19,7 +19,7 @@ class CreatureTree:
     def __init__(self):
         self.root = None
 
-    def insert(self: Any,value, other_value: Optional[Any] = None):
+    def insert(self: Any, value, other_value: Optional[Any] = None):
         def __insert(root, value, other_value):
             if root is None: 
                 return CreatureTree.__nodeTree(value, other_value)
@@ -40,7 +40,6 @@ class CreatureTree:
         if self.root is not None:
             __pre_order(self.root)
 
-
     def in_order(self):
         def __in_order(root):
             if root is not None:
@@ -50,7 +49,6 @@ class CreatureTree:
         if self.root is not None:
             __in_order(self.root)
 
-    
     def post_order(self):
         def __post_order(root):
             if root is not None:
@@ -60,22 +58,21 @@ class CreatureTree:
         if self.root is not None:
             __post_order(self.root)
 
-    
     def search(self, value: Any) -> __nodeTree:
-                def __search(root, value):
-                     if root is not None:
-                        if root.value == value:
-                              return root
-                        elif root.value > value:
-                             return __search(root.left, value)
-                        else:
-                             return __search(root.right, value)
-                        
-                aux = None
-                if self.root is not None:
-                     aux = __search(self.root, value)
-                return aux
-    
+        def __search(root, value):
+            if root is not None:
+                if root.value == value:
+                    return root
+                elif root.value > value:
+                    return __search(root.left, value)
+                else:
+                    return __search(root.right, value)
+            
+        aux = None
+        if self.root is not None:
+            aux = __search(self.root, value)
+        return aux
+
     def proximity_search(self, value: Any) -> __nodeTree:
         def __search(root, value):
             if root is not None:
@@ -91,21 +88,16 @@ class CreatureTree:
             aux = __search(self.root, value)
         return aux
 
-
     def busqueda_por_coincidencia(self, value :Any): 
-   
         def __search(root, value):
             if root is not None:
-         
                 if value.lower() in root.value.lower():
                     print(root.value)
-          
                 __search(root.left, value)
                 __search(root.right, value)
-    
+
         if self.root is not None:
             __search(self.root, value)  
-
 
     def delete(self, value: Any):
         def __replace(root):
@@ -145,15 +137,12 @@ class CreatureTree:
             self.root, delete_value, deleter_other_values = __delete(self.root, value)
         
         return delete_value, deleter_other_values
-    
+
 
 arbol = CreatureTree()
 
 for criatura in criaturas:
-    arbol.insert(criatura["nombre"],
-                 criatura)
-    
-
+    arbol.insert(criatura["nombre"], criatura)
 
 #a. listado inorden de las criaturas y quienes la derrotaron;
 print("Listado de criaturas y quienes la derrotaron")
@@ -161,13 +150,8 @@ arbol.in_order()
 for c in criaturas:
     print(c)
 
-
-
 #b. se debe permitir cargar una breve descripción sobre cada criatura;
-
-
 def agregar_descripcion(nombre: str, descripcion: str):
-    
     for criatura in criaturas:
         if criatura["nombre"] == nombre:
             criatura["descricion"] = descripcion
@@ -182,7 +166,6 @@ print("caso de prueba de agregar descripcion a una criatura")
 for criatura in criaturas:
     if criatura["nombre"] == "Ceto":
         print(criatura)
-
 
 '''
 agregar_descripcion("Tifon", "Monstruo gigante con serpientes en lugar de dedos, enemigo de Zeus.")
@@ -222,7 +205,6 @@ agregar_descripcion("Cierva de Cerinea", "Cierva sagrada de cuernos dorados y pe
 agregar_descripcion("Basilisco", "Rey de las serpientes, capaz de matar con solo una mirada.")
 agregar_descripcion("Jabali de Erimanto", "Jabali gigante que devastaba los campos alrededor de Erimanto.")'''
 
-
 #c. mostrar toda la información de la criatura Talos;
 print("\n")
 print("informacion complenta sobre talos")
@@ -231,10 +213,8 @@ for criatura in criaturas:
     if criatura["nombre"] == "Talos":
         print(criatura)
 
-
 #d. determinar los 3 héroes o dioses que derrotaron mayor cantidad de criaturas;
 def masDerrotas(criaturas):
-
     cont_derrotas = {}
     criaturas_vencidas = {}
 
@@ -252,9 +232,9 @@ def masDerrotas(criaturas):
                 criaturas_vencidas[vencedor] = [criatura["nombre"]]
 
     vencedores_ordenados = sorted(cont_derrotas.items(),
-                                  key = lambda x: x[1],
-                                  reverse = True)
-    
+                                    key = lambda x: x[1],
+                                    reverse = True)
+
     top_tres = vencedores_ordenados[:3]
 
     print("\n")
@@ -262,19 +242,14 @@ def masDerrotas(criaturas):
         print("top 3 de dioses con mas derrotas a criaturas ")
         print(f"{i}. nombre: {vencedor}: derrotas :{cantidad}")
         
-    
     return top_tres
 
 top_tres = masDerrotas(criaturas)
 
-
-
-
 #e. listar las criaturas derrotadas por Heracles;
 def derrotas_heracles(criaturas):
-
     criaturas_heracles = []
-    
+
     for criatura in criaturas:
         if criatura["derrotado_por"] == "Heracles":
             criaturas_heracles.append(criatura["nombre"])
@@ -282,12 +257,10 @@ def derrotas_heracles(criaturas):
     print("Las crituras derrotadas por Heracles son:")
     for criatura in criaturas_heracles:
         print(f"{criatura}")
-    
 
     return derrotas_heracles
 
 derrotas_heracles(criaturas)
-
 
 #f. listar las criaturas que no han sido derrotadas;
 def criaturas_sin_derrotas(criaturas):
@@ -305,20 +278,17 @@ def criaturas_sin_derrotas(criaturas):
 
 criaturas_sin_derrotas(criaturas)
 
-
-#g. además cada nodo debe tener un campo “capturada” que almacenará el nombre del héroe
+#g. además cada nodo debe tener un campo "capturada" que almacenará el nombre del héroe
 #o dios que la capturo;
 def asignar_captura_en_arbol(arbol, nombre_criatura: str, captor: str):
     nodo = arbol.search(nombre_criatura)
     if nodo:
         nodo.capturada = captor
 
-# Uso
-arbol = CreatureTree()
-for criatura in criaturas:
-    arbol.insert(criatura["nombre"], criatura)
-
-
+    # Uso
+    arbol = CreatureTree()
+    for criatura in criaturas:
+        arbol.insert(criatura["nombre"], criatura)
 
 asignar_captura_en_arbol(arbol,"Medusa", "Perseo"),
 asignar_captura_en_arbol(arbol,"Minotauro de Creta", "Teseo"),
@@ -344,12 +314,8 @@ print("prueba de creación de campo capturada")
 nodo = arbol.search("Medusa")
 print(f"Medusa capturada por : {nodo.capturada}")
 
-
-
-
 #h. modifique los nodos de las criaturas Cerbero, Toro de Creta, Cierva Cerinea y Jabalí de
 #Erimanto indicando que Heracles las atrapó;
-
 crituras_heracles = [
     "Cerbero",
     "Toro de Creta",
@@ -379,7 +345,7 @@ arbol.busqueda_por_coincidencia("Jabali")
 
 #j. eliminar al Basilisco y a las Sirenas;
 criaturas_a_eliminar = ["Basilisco", "Sirenas"]
- 
+
 print("\n")
 print("Eliminando a Basilisco y Sirenas")
 
@@ -398,7 +364,6 @@ if delete_value2 is not None:
 else:
     print(" Sirenas no se pudieron eliminar (posiblemente no existen)")
 
-
 nodo1 = arbol.search('Basilisco')
 nodo2 = arbol.search('Sirenas')
 
@@ -408,18 +373,16 @@ nodo_aves = arbol.search("Aves del Estinfalo")
 
 if nodo_aves:
     nodo_aves.descripcion = "Aves carnívoras con plumas de bronce. Heracles derrotó a varias de estas aves como parte de sus doce trabajos."
-    
 
     for criatura in criaturas:
         if criatura["nombre"] == "Aves del Estinfalo":
             criatura["descripcion"] = nodo_aves.descripcion
             break
-    
+
     print(" Información de Aves del Estinfalo actualizada")
     print(f"   Nueva descripcion: {nodo_aves.descripcion}")
 else:
     print("Aves del Estinfalo no encontradas en el arbol")
-
 
 print("\n")
 print("modificacion del nodo aves")
@@ -428,7 +391,6 @@ if nodo_verificacion and nodo_verificacion.descripcion:
     print(f" Aves del Estinfalo - Descripcion: {nodo_verificacion.descripcion}")
 else:
     print(" No se pudo verificar la modificacion")
-
 
 #l. modifique el nombre de la criatura Ladón por Dragón Ladón;
 nodo_ladon = arbol.search("Ladon")
@@ -450,22 +412,19 @@ if nodo_ladon:
         print(f"nombre cambiado {nombre_original} - Dragon Ladon")
         print(f"datos mantenidos: {datos_originales}")
 
-
 #m. realizar un listado por nivel del árbol;
 def listado_por_nivel_externo(arbol):
-
-    
     if arbol.root is None:
         print("El arbol está vacio")
         return
-    
+
     from collections import deque
     cola = deque()
     cola.append(arbol.root)
     nivel_actual = 0
-    
+
     print("LISTADO POR NIVEL DEL ARBOL")
-    
+
     while cola:
         nodos_en_nivel = len(cola)
         print(f"\nNivel {nivel_actual}: ", end="")
@@ -485,10 +444,8 @@ def listado_por_nivel_externo(arbol):
         nivel_actual += 1
     print()
 
-
 print("\n")
 listado_por_nivel_externo(arbol)
-
 
 #n. muestre las criaturas capturadas por Heracles.
 print("\n")

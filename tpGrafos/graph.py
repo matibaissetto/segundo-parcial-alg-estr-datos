@@ -1,7 +1,7 @@
 from typing import Any, Optional
 
 from heap import HeapMin
-from list import List
+from list_ import List
 from queue_ import Queue
 from stack import Stack
 
@@ -235,7 +235,7 @@ g.insert_edge('Z', 'X', 9)
 # g.insert_edge('A', 'B', 15)
 
 # g.show()
-#print(g.exist_path('T', 'Z'))
+print(g.exist_path('T', 'Z'))
 # expansion_tree = g.kruskal('F')
 # print(expansion_tree)
 # peso_total = 0

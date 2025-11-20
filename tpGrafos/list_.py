@@ -25,16 +25,13 @@ class List(list):
         index = self.search(value, key_value)
         return self.pop(index) if index is not None else index
 
-    # def insert_value(self,value: Any,) -> None:
-    #    list_number.append(2)
-    #    list_number.insert(1, 11)
-    #    pass
-
-    def insert_value(self, value: Any, position=None) -> None:
-        if position is None:
-            self.append(value)
-        else:
-            self.insert(position, value)
+    # def insert_value(
+    #     self,
+    #     value: Any,
+    # ) -> None:
+    #     # list_number.append(2)
+    #     # list_number.insert(1, 11)
+    #     pass
 
     def sort_by_criterion(
         self,

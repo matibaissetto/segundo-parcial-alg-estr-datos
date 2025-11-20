@@ -38,7 +38,7 @@ criaturas = [
      "derrotado_por": None
      },
     {"nombre": "Quimera",
-     "derrotado_por": "Belero fonte"
+     "derrotado_por": "Belerofonte"
      },
     {"nombre": "Hidra de Lerna",
      "derrotado_por": "Heracles"
